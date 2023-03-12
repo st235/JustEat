@@ -19,9 +19,11 @@ android {
 
     buildTypes {
         debug {
+            buildConfigField 'long', 'DELAY_INPUT_POSTCODE', '1500L'
             buildConfigField 'String', 'URL_BASE_JUST_EAT', '\"https://uk.api.just-eat.io/\"'
         }
         release {
+            buildConfigField 'long', 'DELAY_INPUT_POSTCODE', '1500L'
             buildConfigField 'String', 'URL_BASE_JUST_EAT', '\"https://uk.api.just-eat.io/\"'
 
             minifyEnabled false
@@ -56,8 +58,7 @@ dependencies {
     implementation 'io.insert-koin:koin-core:3.3.3'
     implementation 'io.insert-koin:koin-android:3.3.3'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation 'com.github.bumptech.glide:glide:4.15.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

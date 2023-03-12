@@ -8,10 +8,10 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.github.st235.justeat.R
 import com.github.st235.justeat.domain.Restaurant
 import com.github.st235.justeat.presentation.utils.show
+import com.squareup.picasso.Picasso
 
 class RestaurantsAdapter: RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() {
 
@@ -88,8 +88,7 @@ class RestaurantsAdapter: RecyclerView.Adapter<RestaurantsAdapter.ViewHolder>() 
         }
 
         fun loadLogo(iconUrl: String) {
-            Glide
-                .with(itemView.context)
+            Picasso.get()
                 .load(iconUrl)
                 .into(iconImageView)
         }

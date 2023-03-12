@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.st235.justeat.domain.Restaurant
 import com.github.st235.justeat.domain.RestaurantsInteractor
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -16,8 +17,11 @@ class MainViewModel(
     private val errorLiveData = MutableLiveData<Throwable?>()
     private val restaurantsLiveData = MutableLiveData<List<Restaurant>>()
 
+    private var lastKnownFindRequest: Job? = null
+
     fun findRestaurantsByPostcode(postcode: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        lastKnownFindRequest?.cancel()
+        lastKnownFindRequest = viewModelScope.launch(Dispatchers.IO) {
             val restaurantsResult = restaurantsInteractor.findOpenRestaurantsByPostCode(postcode)
 
             viewModelScope.launch {
