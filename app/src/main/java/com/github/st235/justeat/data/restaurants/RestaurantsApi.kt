@@ -6,6 +6,6 @@ import retrofit2.http.Path
 interface RestaurantsApi {
 
     @GET("restaurants/bypostcode/{postcode}")
-    fun findRestaurantsByPostCode(@Path("postcode") postcode: String): String
+    suspend fun findRestaurantsByPostCode(@Path("postcode") postcode: String): FindRestaurantsResponse
 
 }
