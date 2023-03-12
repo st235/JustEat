@@ -1,6 +1,6 @@
 package com.github.st235.justeat.domain
 
-import com.github.st235.justeat.data.restaurants.FindRestaurantsResponse
+import com.github.st235.justeat.data.restaurants.RestaurantResponse
 
 data class Restaurant(
     val id: Long,
@@ -10,14 +10,12 @@ data class Restaurant(
     val rating: Double
 )
 
-fun FindRestaurantsResponse.asRestaurantsList(): List<Restaurant> {
-    return this.restaurants.map { response ->
-        Restaurant(
-            id = response.id,
-            name = response.name,
-            description = response.description,
-            logo = response.logo,
-            rating = response.rating
-        )
-    }
+fun RestaurantResponse.asRestaurant(): Restaurant {
+    return Restaurant(
+        id = this.id,
+        name = this.name,
+        description = this.description,
+        logo = this.logo,
+        rating = this.rating
+    )
 }

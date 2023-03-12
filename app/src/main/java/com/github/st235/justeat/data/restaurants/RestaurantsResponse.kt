@@ -28,15 +28,6 @@ data class RestaurantResponse(
     @SerializedName("RatingAverage")
     @Expose
     val rating: Double,
-    @SerializedName("IsOpenNowForDelivery")
-    @Expose
-    val isOpenForDelivery: Boolean,
-    @SerializedName("IsOpenNowForCollection")
-    @Expose
-    val isOpenForCollection: Boolean,
-    @SerializedName("IsOpenNowForPreorder")
-    @Expose
-    val isOpenForPreorder: Boolean,
     @SerializedName("IsOpenNow")
     @Expose
     val isOpenNow: Boolean

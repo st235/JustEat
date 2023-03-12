@@ -8,11 +8,14 @@ class RestaurantsInteractor(
     private val restaurantsRepository: RestaurantsRepository
 ) {
 
-    suspend fun findRestaurantsByPostCode(postcode: String): Result<List<Restaurant>>
+    suspend fun findOpenRestaurantsByPostCode(postcode: String): Result<List<Restaurant>>
         = withContext(Dispatchers.IO) {
         try {
             val data = restaurantsRepository.findRestaurantsByPostcode(postcode)
-            Result.success(data.asRestaurantsList())
+            Result.success(
+                data.restaurants.filter { it.isOpenNow }
+                    .map { it.asRestaurant() }
+            )
         } catch (exception: Exception) {
             Result.failure(exception)
         }

@@ -18,7 +18,7 @@ class MainViewModel(
 
     fun findRestaurantsByPostcode(postcode: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val restaurantsResult = restaurantsInteractor.findRestaurantsByPostCode(postcode)
+            val restaurantsResult = restaurantsInteractor.findOpenRestaurantsByPostCode(postcode)
 
             viewModelScope.launch {
                 if (restaurantsResult.isSuccess) {
