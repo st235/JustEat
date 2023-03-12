@@ -14,5 +14,6 @@
     <style name="InputOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/just_eat_primary</item>
         <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">@color/grey_900</item>
     </style>
 </resources>
